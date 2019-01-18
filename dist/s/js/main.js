@@ -10639,6 +10639,9 @@ class App {
 
 				e.preventDefault();
 			}
+
+			document.addEventListener("touchstart", startTouch, false);
+			document.addEventListener("touchmove", moveTouch, false);
 		}
 		detectSwipe();
 	}
