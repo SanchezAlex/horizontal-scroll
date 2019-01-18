@@ -10704,7 +10704,7 @@ class App {
 
 		let D = document.createElement('div');
 		Draggable.create(D,{
-			trigger:".page", type:'y', minimumMovement:5, cursor:'n-resize',
+			trigger:".page", type:'x', minimumMovement:5, cursor:'n-resize',
 			onDrag: function() {
 				let X = this.getDirection("start") == 'up' ? 1 : -1;
 				initSlide(X);
