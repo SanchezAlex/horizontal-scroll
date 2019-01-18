@@ -10589,61 +10589,61 @@ class App {
 
 		// detect swipe
 
-		function detectSwipe() {
-			// Swipe Up / Down / Left / Right
-			var initialX = null;
-			var initialY = null;
-
-			function startTouch(e) {
-				initialX = e.touches[0].clientX;
-				initialY = e.touches[0].clientY;
-			}
-
-			function moveTouch(e) {
-				if (initialX === null) {
-					return;
-				}
-
-				if (initialY === null) {
-					return;
-				}
-
-				var currentX = e.touches[0].clientX;
-				var currentY = e.touches[0].clientY;
-
-				var diffX = initialX - currentX;
-				var diffY = initialY - currentY;
-
-				if (Math.abs(diffX) > Math.abs(diffY)) {
-					// sliding horizontally
-					if (diffX > 0) {
-						// swiped left
-						console.log("swiped left");
-					} else {
-						// swiped right
-						console.log("swiped right");
-					}
-				} else {
-					// sliding vertically
-					if (diffY > 0) {
-						// swiped up
-						console.log("swiped up");
-					} else {
-						// swiped down
-						console.log("swiped down");
-					}
-				}
-
-				initialX = null;
-				initialY = null;
-
-				e.preventDefault();
-			}
-
-			document.addEventListener("touchstart", startTouch, false);
-			document.addEventListener("touchmove", moveTouch, false);
-		}
-		detectSwipe();
+		// function detectSwipe() {
+		// 	// Swipe Up / Down / Left / Right
+		// 	var initialX = null;
+		// 	var initialY = null;
+		//
+		// 	function startTouch(e) {
+		// 		initialX = e.touches[0].clientX;
+		// 		initialY = e.touches[0].clientY;
+		// 	}
+		//
+		// 	function moveTouch(e) {
+		// 		if (initialX === null) {
+		// 			return;
+		// 		}
+		//
+		// 		if (initialY === null) {
+		// 			return;
+		// 		}
+		//
+		// 		var currentX = e.touches[0].clientX;
+		// 		var currentY = e.touches[0].clientY;
+		//
+		// 		var diffX = initialX - currentX;
+		// 		var diffY = initialY - currentY;
+		//
+		// 		if (Math.abs(diffX) > Math.abs(diffY)) {
+		// 			// sliding horizontally
+		// 			if (diffX > 0) {
+		// 				// swiped left
+		// 				console.log("swiped left");
+		// 			} else {
+		// 				// swiped right
+		// 				console.log("swiped right");
+		// 			}
+		// 		} else {
+		// 			// sliding vertically
+		// 			if (diffY > 0) {
+		// 				// swiped up
+		// 				console.log("swiped up");
+		// 			} else {
+		// 				// swiped down
+		// 				console.log("swiped down");
+		// 			}
+		// 		}
+		//
+		// 		initialX = null;
+		// 		initialY = null;
+		//
+		// 		e.preventDefault();
+		// 	}
+		//
+		// 	document.addEventListener("touchstart", startTouch, false);
+		// 	document.addEventListener("touchmove", moveTouch, false);
+		// }
+		// detectSwipe();
 	}
 
 
@@ -10699,8 +10699,17 @@ class App {
 		document.addEventListener("mousewheel", initSlide);
 		document.addEventListener("DOMMouseScroll", initSlide);
 
-		document.addEventListener("touchstart", initSlide);
-		document.addEventListener("touchmove", initSlide);
+		// document.addEventListener("touchstart", initSlide);
+		// document.addEventListener("touchmove", initSlide);
+
+		let D = document.createElement('div');
+		Draggable.create(D,{
+			trigger:".page", type:'y', minimumMovement:5, cursor:'n-resize',
+			onDrag: function() {
+				let X = this.getDirection("start") == 'up' ? 1 : -1;
+				initSlide(X);
+			}
+		});
 
 	}
 
