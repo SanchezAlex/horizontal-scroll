@@ -1,0 +1,23 @@
+mixin header-page()
+  header.header.header-page
+    div.header__wrap.header-page
+      a.header__logo.header-page(href='/')
+        img(src='s/images/icon-logo.png' alt='logo')
+
+      nav.menu
+        button.menu__btn.js-navBtn
+          span.menu__btn__line.menu__btn__line--black
+          span.menu__btn__line.menu__btn__line--black
+          span.menu__btn__line.menu__btn__line--small.menu__btn__line--black
+        div.menu__main.js-navMenu
+          a.logo__menu(href='/')
+            img.logo__menu__img(src='s/images/icon-logo.png' alt='logo')
+          ul.menu__list
+            li.menu__item
+              a.menu__link(href='#main') Main
+            li.menu__item
+              a.menu__link(href='#about-us') About us
+            li.menu__item
+              a.menu__link(href='#news') News
+          button.menu__close.js-navCloseBtn
+            span.menu__close__line

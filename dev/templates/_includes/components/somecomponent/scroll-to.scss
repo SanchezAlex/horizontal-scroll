@@ -1,0 +1,38 @@
+.scroll-to {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 20px;
+  width: 10%;
+  position: absolute;
+  right: 0;
+  top: 120px;
+  bottom: 0;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-family: 'Gotham', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(28, 24, 20, 0.6);
+    transform: translateY(50%);
+    text-transform: uppercase;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    min-width: 21px;
+
+    &__link {
+      fill: #EE4F4B;
+      width: 37px;
+    }
+  }
+}

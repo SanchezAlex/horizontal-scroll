@@ -1,0 +1,31 @@
+mixin header()
+
+  header.header
+    div.header__wrap
+      div.header__main
+        a.header__logo(href='/')
+          img(src='s/images/icon-logo.png' alt='logo')
+        div.contact
+          a.contact__phone(href='tel:+2940606660')
+            picture.contact__phone__icon
+              source(srcset="s/images/icon-phone-red.png" media="(min-width: 760px)")
+              source(srcset="s/images/icon-phone-black.png" media="(min-width: 240px)")
+              img(srcset="s/images/icon-phone-red.png" alt="scheme image")
+            span.contact__phone__numb 294.606.660
+      nav.menu
+        button.menu__btn.js-navBtn
+          span.menu__btn__line
+          span.menu__btn__line
+          span.menu__btn__line.menu__btn__line--small
+        div.menu__main.js-navMenu
+          a.logo__menu(href='/')
+            img.logo__menu__img(src='s/images/icon-logo.png' alt='logo')
+          ul.menu__list
+            li.menu__item
+              a.menu__link(href='#main') Main
+            li.menu__item
+              a.menu__link(href='#about-us') About us
+            li.menu__item
+              a.menu__link(href='#news') News
+          button.menu__close.js-navCloseBtn
+            span.menu__close__line

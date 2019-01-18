@@ -1,0 +1,26 @@
+//-----------   INCLUDES   --------------
+
+//- helpers
+include ../helpers/paths
+include ../helpers/_mixins
+
+//- components
+include ../components/head/head
+//include ../components/header/header
+include ../components/footer/footer
+
+//-----------   INCLUDES END  --------------
+
+doctype html
+html(lang='en')
+	block head
+		+head({'title':'Hello'})
+	body.no-scroll
+		div.preloader
+			div.preloader__gif
+		block content
+		block footer
+			+footer()
+
+	script(src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js")
+	script(src=route.js + "main.js")

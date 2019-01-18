@@ -1,0 +1,121 @@
+extends _includes/_extends/main
+
+include _includes/components/header/header
+include _includes/components/header-page/header-page
+include _includes/components/somecomponent/scroll-to
+
+block content
+
+	div.wrapper
+
+		section.intro.page(style='background-image:url(s/images/intro-bckgr.png)')
+			+header()
+			div.intro__container
+				div.intro__wrap
+					div.intro__main
+						span.intro__pre-title Sed ut perspiciatis
+						h1.intro__title Good luck with your test task!
+						div.intro__desc
+							span.intro__pre-title Nemo enim ipsam:
+							p.intro__desc__text Neque porro quisquam est, qui dolorem ipsum quia
+							div.intro__desc__arrow
+								svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512")
+									path(d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z")
+					div.intro__img
+						img(src='s/images/intro-image.png')
+
+				div.intro__bottom
+					div.upload
+						h3.upload__title Just Upload Your File Here
+						div.upload__main
+							button.upload__btn
+								img.upload__icon(src='s/images/icon-drag-drop.png')
+								| Drag and drop
+							button.upload__btn
+								img.upload__icon(src='s/images/icon-select-file.png')
+								| Select file
+					div.about
+						div.about__block
+							span.about__name Bono Malorum
+							a.about__btn More Information
+						div.about__block
+							span.about__name H. Rackham?
+							a.about__btn More Information
+
+			div.grid
+				div.grid__line
+				div.grid__line.grid__line--small
+
+			+scroll-to()
+
+		section.page
+
+			+header-page()
+
+			div.page__wrap
+				aside.info
+					div.info__main
+						div.info__counter
+						div.info__dots
+					div.info__square
+
+				div.content
+					span.content__pre-title Quis autem vel
+					h2.content__title Ut enim ad minima veniam
+					ul.content__list
+						li.content__list__item
+							span Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae .
+						li.content__list__item
+							span Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae .
+						li.content__list__item
+							span Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+						li.content__list__item
+							span Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae .
+						li.content__list__item
+							span Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+							| Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+					div.content__footer
+						span Finibus
+						span.content__footer--red Bonorum et Malorum
+
+			div.page__scroll
+				+scroll-to()
+
+
+		section.page.page--white(style='background-image:url(s/images/photo_bgr_2slide.png)')
+
+			+header-page()
+
+			div.page__wrap
+				aside.info
+					img.info__banner(src="s/images/photo_bgr_2slide.png" alt="banner image")
+					div.info__main
+						div.info__counter
+						div.info__dots
+					div.info__square
+
+				div.content
+					span.content__pre-title Quis autem vel eum iure reprehenderit qui in ea voluptate
+					h2.content__title Sed ut perspiciatis
+					div.content__img
+						picture
+							source(srcset="s/images/scheme-desktop.png" media="(min-width: 1100px)")
+							source(srcset="s/images/scheme-tablet.png" media="(min-width: 760px)")
+							source(srcset="s/images/scheme-mobile.png" media="(min-width: 240px)")
+							img(srcset="s/images/scheme-desktop.png" alt="scheme image")
+					div.content__footer
+						span Finibus
+						span.content__footer--red Bonorum et Malorum
+
+			div.page__scroll
+
+				+scroll-to()
+
+
+
+
+
+
+
+
+
