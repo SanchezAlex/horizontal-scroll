@@ -97,6 +97,8 @@
     &__main {
       display: flex;
       max-width: 525px;
+      position: relative;
+      z-index: 3;
     }
     &__btn {
       flex: 0 50%;
@@ -109,6 +111,23 @@
       font-size: 18px;
       font-weight: 500;
       color: #fff;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        background-color: #b6332f;
+        transition: .3s ease;
+        z-index: -1;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
     }
     &__icon {
       display: inline-block;
@@ -121,6 +140,8 @@
     justify-content: center;
     flex-direction: column;
     padding: 0 20px;
+    position: relative;
+    z-index: 2;
     &__block {
       width: 100%;
       text-align: center;
@@ -150,13 +171,12 @@
       font-weight: 900;
       line-height: 1.5;
       color: #fff;
+      cursor: pointer;
+      transition: .3s ease;
+      &:hover {
+        color: #ddc9b5;
+      }
     }
-  }
-}
-
-.menu {
-  &__main {
-    display: none;
   }
 }
 
@@ -412,15 +432,15 @@
 // page section end
 
 .wrapper {
-  position: fixed;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
   counter-reset: numb-page;
 }
-
-//.dots {
-//  display: none;
-//}
 
 // media queries
 
@@ -565,7 +585,7 @@
   }
 }
 
-@media only screen and (max-height: 768px) {
+@media only screen and (max-height: 800px) {
   .intro__wrap {
     padding-top: 90px;
   }
@@ -573,9 +593,19 @@
     margin-bottom: 0;
     font-size: 50px;
   }
+  .intro__img__item {
+    max-width: 200px;
+  }
+  .intro__bottom,
+  .scroll-to__arrow {
+    height: 170px;
+  }
+  .scroll-to__text {
+    transform: translateY(20%);
+  }
 }
 
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 760px) {
   .grid {
     display: none;
   }
@@ -588,6 +618,10 @@
   }
   .header .menu {
     padding-right: 5%;
+  }
+  .header .menu__close {
+    top: 10px;
+    right: 10px;
   }
   .contact__phone__numb {
     display: none;
@@ -638,10 +672,8 @@
     min-height: 100vh;
   }
   .page {
-    display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    height: auto;
   }
   .page.page--white {
     background-image: none !important;
@@ -686,6 +718,9 @@
   .intro__bottom {
     padding: 7% 5%;
     height: 240px;
+  }
+  .intro__img__item {
+    max-width: 120px;
   }
   .scroll-to {
     position: relative;
@@ -816,11 +851,13 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 35px 5%;
+    min-height: 80px;
+    padding: 0 5%;
     color: #7b7a79;
   }
   .page__scroll .scroll-to__arrow {
     position: relative;
+    width: auto;
     transform: none;
     left: 0;
     background-color: transparent;
@@ -854,3 +891,293 @@
     color: #fff;
   }
 }
+
+// queries for landscape in iPhones and pixel XL
+
+@media only screen and (min-width: 810px) and (max-width: 897px) {
+  .grid {
+    display: none;
+  }
+  .header__logo,
+  .header__logo.header-page {
+    max-width: 95px;
+  }
+  .header__main {
+    padding-right: 0;
+  }
+  .header .menu {
+    padding-right: 5%;
+  }
+  .header .menu__close {
+    top: 10px;
+    right: 10px;
+  }
+  .contact__phone__numb {
+    display: none;
+  }
+  .intro__pre-title {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.8px;
+  }
+  .intro__wrap {
+    flex: 0 100%;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 72px;
+  }
+  .intro__title {
+    font-size: 33.5px;
+    letter-spacing: 0.85px;
+  }
+  .intro__desc {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    margin-top: 250px;
+  }
+  .intro__desc__text {
+    font-size: 16px;
+    flex: 0 80%;
+  }
+  .intro__desc__arrow {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+  .intro__main {
+    padding: 0;
+  }
+  .intro__img {
+    position: absolute;
+    padding: 0;
+    max-width: 125px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+  }
+  .intro {
+    min-height: 100vh;
+  }
+  .page {
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .page.page--white {
+    background-image: none !important;
+  }
+  .intro__container {
+    display: block;
+  }
+  .intro__bottom {
+    position: relative;
+    padding: 5%;
+    flex: 0 100%;
+    right: 0;
+    flex-direction: column;
+  }
+  .intro .upload__title {
+    font-size: 12px;
+    letter-spacing: 2.4px;
+  }
+  .intro .upload {
+    width: 285px;
+    padding-right: 0;
+    text-align: center;
+  }
+  .intro .about {
+    width: 100%;
+    padding: 0;
+  }
+  .intro .upload__main {
+    margin: 20px 0;
+  }
+  .intro .about__name::after {
+    width: 15px;
+    margin: 0 15px;
+  }
+  .intro .about__name {
+    font-size: 14px;
+    min-width: 150px;
+  }
+  .intro .about__btn {
+    font-size: 16px;
+  }
+  .intro__bottom {
+    padding: 7% 5%;
+    height: 240px;
+  }
+  .intro__img__item {
+    max-width: 120px;
+  }
+  .scroll-to {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 120px;
+    align-items: center;
+    justify-content: center;
+  }
+  .scroll-to__text {
+    display: block;
+    writing-mode: unset;
+    transform: none;
+  }
+  .scroll-to__arrow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .scroll-to__arrow__link {
+    max-width: 17px;
+  }
+  .scroll-to__arrow__icon {
+    max-width: 17px;
+    transform: translateY(25%);
+  }
+
+  .header.header-page {
+    height: 70px;
+  }
+  .page__wrap {
+    display: block;
+    margin: 0;
+    height: auto;
+  }
+  .page .info {
+    display: block;
+    padding: 20px 0 10px;
+  }
+  .page.page--white .info {
+    margin-top: -72px;
+    padding: 0;
+    position: relative;
+    min-height: 260px;
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(64, 64, 64, 0.44);
+      z-index: 1;
+    }
+  }
+  .page .info__main {
+    flex-direction: row;
+    justify-content: space-between;
+    border: none;
+    width: 100%;
+    padding: 0 5%;
+  }
+  .page.page--white .info__main {
+    margin-top: 100px;
+    z-index: 2;
+    &::after {
+      display: none;
+    }
+  }
+  .page .info__square {
+    display: none;
+  }
+  .page .info__counter {
+    writing-mode: unset;
+    transform: unset;
+    font-size: 60px;
+  }
+  .page .info__dots {
+    margin: auto;
+    align-items: flex-start;
+    padding-right: 10px;
+  }
+  .page .content {
+    padding: 20px 5%;
+  }
+  .page .content__list__item {
+    font-size: 14px;
+  }
+  .page .content__list {
+    padding-left: 20px;
+  }
+  .page .content__list__item::before {
+    left: -20px;
+    top: -4px;
+  }
+  .page .content__footer {
+    position: relative;
+    height: auto;
+    padding-bottom: 5px;
+    width: 100%;
+    left: 0;
+    min-height: 100px;
+    font-size: 14px;
+    line-height: 23px;
+    letter-spacing: 2.3px;
+  }
+  .page .content__footer--red::after {
+    width: 45px;
+  }
+  .page__scroll {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border: none;
+  }
+  .page__scroll .scroll-to {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: 80px;
+    padding: 0 5%;
+    color: #7b7a79;
+  }
+  .page__scroll .scroll-to__arrow {
+    position: relative;
+    width: auto;
+    transform: none;
+    left: 0;
+    background-color: transparent;
+  }
+  .page__scroll .scroll-to__text {
+    display: flex;
+  }
+  .page--white .page__wrap {
+    margin-right: 0;
+  }
+  .page--white .content__footer {
+    min-height: 150px;
+    margin-top: -50px;
+  }
+  .page.page--white .page__scroll .scroll-to__text {
+    color: #7b7a79;
+  }
+  .page--white .scroll-to__arrow__link {
+    fill: #d64743;
+  }
+  .page .info__banner {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+  }
+  .page.page--white .info__counter {
+    color: #fff;
+  }
+}
+

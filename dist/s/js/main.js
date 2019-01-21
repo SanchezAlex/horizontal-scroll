@@ -10586,64 +10586,36 @@ class App {
 			document.body.classList.remove('no-scroll');
 		}, 1000);
 
+	}
 
-		// detect swipe
 
-		// function detectSwipe() {
-		// 	// Swipe Up / Down / Left / Right
-		// 	var initialX = null;
-		// 	var initialY = null;
-		//
-		// 	function startTouch(e) {
-		// 		initialX = e.touches[0].clientX;
-		// 		initialY = e.touches[0].clientY;
-		// 	}
-		//
-		// 	function moveTouch(e) {
-		// 		if (initialX === null) {
-		// 			return;
-		// 		}
-		//
-		// 		if (initialY === null) {
-		// 			return;
-		// 		}
-		//
-		// 		var currentX = e.touches[0].clientX;
-		// 		var currentY = e.touches[0].clientY;
-		//
-		// 		var diffX = initialX - currentX;
-		// 		var diffY = initialY - currentY;
-		//
-		// 		if (Math.abs(diffX) > Math.abs(diffY)) {
-		// 			// sliding horizontally
-		// 			if (diffX > 0) {
-		// 				// swiped left
-		// 				console.log("swiped left");
-		// 			} else {
-		// 				// swiped right
-		// 				console.log("swiped right");
-		// 			}
-		// 		} else {
-		// 			// sliding vertically
-		// 			if (diffY > 0) {
-		// 				// swiped up
-		// 				console.log("swiped up");
-		// 			} else {
-		// 				// swiped down
-		// 				console.log("swiped down");
-		// 			}
-		// 		}
-		//
-		// 		initialX = null;
-		// 		initialY = null;
-		//
-		// 		e.preventDefault();
-		// 	}
-		//
-		// 	document.addEventListener("touchstart", startTouch, false);
-		// 	document.addEventListener("touchmove", moveTouch, false);
-		// }
-		// detectSwipe();
+	initMenu() {
+
+		// nav menu
+
+		function menu() {
+			let navMenus = document.querySelectorAll('.js-navMenu');
+			let navBtns = document.querySelectorAll('.js-navBtn');
+			let navCloseBtns = document.querySelectorAll('.js-navCloseBtn');
+
+
+			navBtns.forEach((item) => {
+				item.addEventListener('click', () => {
+					navMenus.forEach( (el) => {
+						el.classList.add('is-active');
+					});
+				})
+			});
+
+			navCloseBtns.forEach((item) => {
+				item.addEventListener('click', () => {
+					navMenus.forEach( (el) => {
+						el.classList.remove('is-active');
+					});
+				})
+			});
+		}
+		menu();
 	}
 
 
@@ -10651,9 +10623,10 @@ class App {
 
 		// init horizontal scroll
 
-		let sections = document.querySelectorAll('.page'), tl = new TimelineLite({ paused:true });
+		let sections = document.querySelectorAll('.page'),
+			tl = new TimelineLite({ paused:true });
 
-		for(let i = 0; i < sections.length; i++) {
+		for (let i = 0; i < sections.length; i++) {
 
 			let dotsElem = document.getElementsByClassName('info__dots');
 
@@ -10664,7 +10637,6 @@ class App {
 				createDot.id = 'dot' + i;
 				createDot.addEventListener('click',function() {
 					tl.seek(this.id).pause();
-
 				});
 
 
@@ -10680,11 +10652,12 @@ class App {
 			if(i !== sections.length - 1) {
 
 				tl.to(sections[i], 0.5,{ scale:.8, ease:Back.easeOut })
-					.to(sections[i], 0.7, { xPercent:-100, rotationY:80 }, 'L'+i)
-					.from(sections[i+1], 0.7, { xPercent:100,rotationY:-80 }, 'L'+i)
-					.from(sections[i+1], 0.5, { scale:.8, ease:Back.easeIn })
+					.to(sections[i], 0.7, { xPercent:-100, rotationY:80, }, 'L'+i)
+					.from(sections[i+1], 0.7, { xPercent:100,rotationY:-80, }, 'L'+i)
+					.from(sections[i+1], 0.5, { scale:.8, ease:Back.easeIn, })
 			}
 		}
+
 
 		function initSlide(e) {
 			let check = isNaN(e) ? e.wheelDelta || -e.detail : e;
@@ -10699,15 +10672,18 @@ class App {
 		document.addEventListener("mousewheel", initSlide);
 		document.addEventListener("DOMMouseScroll", initSlide);
 
-		// document.addEventListener("touchstart", initSlide);
-		// document.addEventListener("touchmove", initSlide);
 
-		let D = document.createElement('div');
-		Draggable.create(D,{
-			trigger:".page", type:'x', minimumMovement:5, cursor:'n-resize',
+		// add listener for touch devices
+
+		let touchInit = document.createElement('div');
+
+		Draggable.create(touchInit,{
+
+			trigger: ".scroll-to", type: 'y', minimumMovement: 5, cursor: 'n-resize',
+
 			onDrag: function() {
-				let X = this.getDirection("start") == 'up' ? 1 : -1;
-				initSlide(X);
+				let touchDirection = this.getDirection("start") === 'up' ? 1 : -1;
+				initSlide(touchDirection);
 			}
 		});
 
@@ -10716,6 +10692,7 @@ class App {
 	run() {
 
 		this.initEvents();
+		this.initMenu();
 		this.initHorizontalScroll();
 
 	}
@@ -10726,30 +10703,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const app = new App();
 
 	app.run();
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
