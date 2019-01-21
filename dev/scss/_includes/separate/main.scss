@@ -444,7 +444,27 @@
 
 // media queries
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1440px) and (max-height: 960px) {
+  .intro__wrap {
+    padding-top: 90px;
+  }
+  .intro__title {
+    margin-bottom: 0;
+    font-size: 50px;
+  }
+  .intro__img__item {
+    max-width: 200px;
+  }
+  .intro__bottom,
+  .scroll-to__arrow {
+    height: 170px;
+  }
+  .scroll-to__text {
+    transform: translateY(20%);
+  }
+}
+
+@media only screen and (max-width: 1025px) and (max-height: 767px){
   .header__logo {
     max-width: 128px;
     width: 100%;
@@ -464,6 +484,7 @@
   }
   .intro__wrap {
     flex: 0 85%;
+    padding-top: 75px;
   }
   .intro__pre-title {
     font-size: 16px;
@@ -480,6 +501,7 @@
   }
   .intro__bottom {
     padding-left: 5%;
+    height: 170px;
   }
   .intro .about {
     flex: 0 57%;
@@ -585,27 +607,9 @@
   }
 }
 
-@media only screen and (max-height: 800px) {
-  .intro__wrap {
-    padding-top: 90px;
-  }
-  .intro__title {
-    margin-bottom: 0;
-    font-size: 50px;
-  }
-  .intro__img__item {
-    max-width: 200px;
-  }
-  .intro__bottom,
-  .scroll-to__arrow {
-    height: 170px;
-  }
-  .scroll-to__text {
-    transform: translateY(20%);
-  }
-}
+// queries for landscape in iPhones X and pixel XL
 
-@media only screen and (max-width: 760px) {
+@media only screen and (min-width: 810px) and (max-width: 897px) {
   .grid {
     display: none;
   }
@@ -892,9 +896,7 @@
   }
 }
 
-// queries for landscape in iPhones and pixel XL
-
-@media only screen and (min-width: 810px) and (max-width: 897px) {
+@media only screen and (max-width: 760px) {
   .grid {
     display: none;
   }
